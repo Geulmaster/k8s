@@ -1,0 +1,7 @@
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+helm repo update
+helm install prometheus prometheus-community/kube-prometheus-stack
+kubectl apply -f mongodb.yaml
+helm install mongodb-exporter prometheus-community/prometheus-mongodb-exporter -f values.yaml
+example: kubectl get servicemonitor mongodb-exporter-prometheus-mongodb-exporter -oyaml
